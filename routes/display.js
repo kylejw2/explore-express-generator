@@ -7,14 +7,47 @@ app.use(express.json());
 const jsonArr = require('../public/dataset/data.json');
 
 /* GET display page. */
-router.get('/', function(req, res, next) {
-  const obj = jsonArr[4];
-  if (obj.name === 'The Dark Knight') {
-    res.render('display', {result: `I love the movie, "${obj.name}"! It was released in ${obj.year}.`})
-  } else {
-    res.render('display', {result: `I have never seen the movie, "${obj.name}". It was released in ${obj.year}.`});
-  }
-  
+router.get('/:index', function(req, res, next) {
+  const myIndex = req.params.index;
+  res.render('display', { result: `The movie you requested is "${jsonArr[myIndex].name}". It was released in ${jsonArr[myIndex].year}.` });
 });
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.use(express.json());
+
+// const jsonArr = require('../public/dataset/data.json');
+
+
+
+// const index = req.params.index;
+  // const obj = jsonArr[index];
+  // if (obj.name === 'The Dark Knight') {
+  //   res.render('display', {result: `I love the movie, "${obj.name}"! It was released in ${obj.year}.`})
+  // } else {
+  //   res.render('display', {result: `I have never seen the movie, "${obj.name}". It was released in ${obj.year}.`});
+  // }
